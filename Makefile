@@ -6,7 +6,7 @@
 #    By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 17:23:21 by rmakabe           #+#    #+#              #
-#    Updated: 2023/03/05 18:01:06 by rmakabe          ###   ########.fr        #
+#    Updated: 2023/03/07 17:58:40 by rmakabe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,7 @@ OBJ := $(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
 
 
 # command
-all: $(NAME) $(ARCHIVE)
+all: $(NAME)
 
 $(NAME):$(OBJ)
 	@mkdir -p $(OBJ_DIR)
@@ -48,6 +48,8 @@ $(OBJ_DIR)%.o:$(SRC_DIR)%.c
 $(ARCHIVE):
 ifdef WITH_DEBUG
 	make debug -C $(ARCHIVE_DIR)
+else
+	make -C $(ARCHIVE_DIR)
 endif
 
 clean:

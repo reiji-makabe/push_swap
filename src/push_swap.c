@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 17:09:36 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/05 19:21:39 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/07 18:43:48 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,8 @@ static int	a_is_sorted(t_stack *a)
 }
 
 /*
- * sort last_three
+ * sort last three number
+ * explain, argc=2, argv[1]="3 1 2", * a->prev->num = 2. a->prev->prev->num = 1.
  */
 static void	sort_three_num(t_stack *a, t_list **op)
 {
@@ -71,25 +72,25 @@ static void	sort_three_num(t_stack *a, t_list **op)
 		if (a->prev->num > a->prev->prev->prev->num)
 			sa(a, op);
 		else
-		{
-			if (a->prev->prev->num > a->prev->prev->prev->num)
-			{
-				sa(a, op);
-				rra(a, op);
-			}
-			else
-				ra(a, op);
-		}
+			ra(a, op);
 	}
 	else
 	{
-		if (a->prev->num > a->prev->prev->prev->num)
+		if (a->prev->prev->num < a->prev->prev->prev->num)
 		{
 			sa(a, op);
-			ra(a, op);
+			rra(a, op);
 		}
 		else
-			rra(a, op);
+		{
+			if (a->prev->num > a->prev->prev->prev->num)
+			{
+				sa(a, op);
+				ra(a, op);
+			}
+			else
+				rra(a, op);
+		}
 	}
 }
 /*

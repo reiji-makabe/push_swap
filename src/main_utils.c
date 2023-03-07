@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 02:34:14 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/04 20:38:28 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/07 17:49:49 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,8 +40,10 @@ int	split_check(int *split, size_t size)
 {
 	size_t	i;
 	size_t	j;
+	int		flag;
 
 	i = 0;
+	flag = 1;
 	while (i < size - 1)
 	{
 		j = i + 1;
@@ -51,9 +53,11 @@ int	split_check(int *split, size_t size)
 				return (1);
 			j++;
 		}
+		if (split[i] > split[i + 1])
+			flag = 0;
 		i++;
 	}
-	return (0);
+	return (flag);
 }
 
 void	coordinate_compress(t_stack *a, int *split, size_t size)

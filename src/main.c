@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 01:34:40 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/05 18:49:09 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/07 18:36:07 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ static t_stack	*put_in_stack_and_add_coord_comp(int argc, char **argv)
 		split = char_a_to_int_a(argv[1], &size);
 	else
 	{
-		split = char_2d_a_to_int_a(argc - 1, argv++);
+		split = char_2d_a_to_int_a(argc - 1, argv + 1);
 		size = argc - 1;
 	}
 	if ((split == NULL) || (split_check(split, size)))
@@ -130,6 +130,7 @@ static t_stack	*int_array_to_stack(int *split, int num)
 	while (num--)
 	{
 		if (!stack_add_back(re, *split))
+
 		{
 			stack_clear(re);
 			return (NULL);
