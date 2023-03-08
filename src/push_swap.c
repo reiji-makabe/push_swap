@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 17:09:36 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/08 13:57:41 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/09 07:03:11 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,8 @@ int	push_swap(t_stack *a, t_stack *b)
 			ft_printf("ra\n");
 		else if (a_size <= 3)
 			sort_three_num(a, &op);
+		else if (a_size <= 6)
+			quick_sort(a, b, op);
 		else
 			binary_radix_sort(a, b, op);
 		re = print_op(op);

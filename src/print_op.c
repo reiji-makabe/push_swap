@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 15:48:45 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/08 14:58:43 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/09 07:00:59 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,35 +19,35 @@
 static int	op_put_together(t_list *tmp, char *new);
 static int	op_put_together1(t_list *tmp, char *new);
 static int	edit_ops(t_list *old, char *new, int flag, t_list **edit);
-static void	print_all(t_list *op);
+static int	print_all(t_list *op, char *new);
 
 int	print_op(t_list *op)
 {
 	int		flag;
+	int		size;
 	t_list	*edit;
 	t_list	*old;
 	char	*new;
 
-	flag = 1;
 	new = (char *)malloc(sizeof(char) * 8);
 	if (new == NULL)
 		return (0);
+	flag = 1;
 	while (flag)
 	{
-		flag = 0;
+		size = ft_lstsize(op);
 		edit = op->next;
 		old = op;
-		while (edit->next)
+		while (edit && edit->next)
 		{
 			flag = op_put_together(edit, new);
 			if (!edit_ops(old, new, flag, &edit))
 				old = old->next;
 		}
-		if (!flag)
-			print_all(op);
+		if (size != ft_lstsize(op))
+			flag = 1;
 	}
-	free(new);
-	return (1);
+	return (print_all(op, new));
 }
 
 static int	op_put_together(t_list *tmp, char *new)
@@ -79,7 +79,8 @@ static int	op_put_together(t_list *tmp, char *new)
 	return (flag);
 }
 
-static int	op_put_together1(t_list *tmp, char *new){
+static int	op_put_together1(t_list *tmp, char *new)
+{
 	int		flag;
 	char	*next;
 
@@ -108,23 +109,21 @@ static int	op_put_together1(t_list *tmp, char *new){
 
 static int	edit_ops(t_list *old, char *new, int flag, t_list **edit)
 {
-	t_list	*now;
 	t_list	*connect;
 
-	now = old->next;
-	connect = now->next->next;
+	connect = old->next->next->next;
 	if (flag == 1)
 	{
-		ft_strlcpy(now->content, new, 5);
-		ft_lstdelone(now->next, free);
-		now->next = connect;
+		ft_strlcpy(old->next->content, new, 5);
+		ft_lstdelone(old->next->next, free);
+		old->next->next = connect;
 		*edit = connect;
 		return (1);
 	}
 	else if (flag == 2)
 	{
-		ft_lstdelone(now->next, free);
-		ft_lstdelone(now, free);
+		ft_lstdelone(old->next->next, free);
+		ft_lstdelone(old->next, free);
 		old->next = connect;
 		*edit = connect;
 		return (2);
@@ -134,7 +133,7 @@ static int	edit_ops(t_list *old, char *new, int flag, t_list **edit)
 	return (0);
 }
 
-static void	print_all(t_list *op)
+static int	print_all(t_list *op, char *new)
 {
 	size_t	size;
 	t_list	*now;
@@ -146,4 +145,6 @@ static void	print_all(t_list *op)
 		ft_printf("%s", now->content);
 		now = now->next;
 	}
+	free(new);
+	return (1);
 }

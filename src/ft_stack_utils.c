@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 05:02:40 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/07 21:22:55 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/09 06:52:19 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ int	swap_last_two(t_stack *sentinel)
 
 int	push_left_front_to_right(t_stack *left, t_stack *right)
 {
-	t_stack *push;
+	t_stack	*push;
 
 	if (stack_size(left) <= 0)
 		return (0);
