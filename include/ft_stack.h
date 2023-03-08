@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 01:42:39 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/07 18:41:56 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/07 20:00:58 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ void	stack_delone(t_stack *sentinel, t_stack *del);
 void	stack_clear(t_stack *sentinel);
 
 int	swap_last_two(t_stack *sentinel);
-int	push_left_last_to_right(t_stack *left, t_stack *right);
+int	push_left_front_to_right(t_stack *left, t_stack *right);
 int	rotate_stack(t_stack *sentinel);
 int	reverse_rotate_stack(t_stack *sentinel);
 

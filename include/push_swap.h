@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 01:34:45 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/02 20:43:52 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/07 19:15:39 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,5 @@ void	rrb(t_stack *b, t_list **op);
 void	rrr(t_stack *a, t_stack *b, t_list **op);
 int		push_swap(t_stack *a, t_stack *b);
 int		print_op(t_list	*op);
-void	binary_radix_sort(t_stack *a, t_stack *b, t_list *op);
 
 #endif

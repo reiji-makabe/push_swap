@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/11 20:31:00 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/02/19 15:40:22 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/07 21:49:46 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,12 +37,12 @@ void	ss(t_stack *a, t_stack *b, t_list **op)
 
 void	pa(t_stack *a, t_stack *b, t_list **op)
 {
-	push_left_last_to_right(a, b);
+	push_left_front_to_right(b, a);
 	ft_lstadd_back(op, ft_lstnew("pa\n"));
 }
 
 void	pb(t_stack *a, t_stack *b, t_list **op)
 {
-	push_left_last_to_right(b, a);
+	push_left_front_to_right(a, b);
 	ft_lstadd_back(op, ft_lstnew("pb\n"));
 }

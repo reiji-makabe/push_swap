@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 17:09:36 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/07 18:43:48 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/07 19:14:45 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 #include "ft_stack.h"
 
 static int	a_is_sorted(t_stack *a);
-static void	sort_three_num(t_stack *a, t_list **op);
 
 int	push_swap(t_stack *a, t_stack *b)
 {
@@ -65,7 +64,7 @@ static int	a_is_sorted(t_stack *a)
  * sort last three number
  * explain, argc=2, argv[1]="3 1 2", * a->prev->num = 2. a->prev->prev->num = 1.
  */
-static void	sort_three_num(t_stack *a, t_list **op)
+void	sort_three_num(t_stack *a, t_list **op)
 {
 	if (a->prev->num > a->prev->prev->num)
 	{

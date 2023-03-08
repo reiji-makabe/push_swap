@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 05:02:40 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/02/22 00:44:48 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/07 21:22:55 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,36 @@ int	swap_last_two(t_stack *sentinel)
 	return (1);
 }
 
-int	push_left_last_to_right(t_stack *left, t_stack *right)
+//int	push_left_last_to_right(t_stack *left, t_stack *right)
+//{
+//	t_stack *push;
+//
+//// rightが0の時をまだ考えてない
+//	if (stack_size(left) <= 0)
+//		return (0);
+//	push = left->prev;
+//	push->prev->next = left;
+//	left->prev = left->prev->prev;
+//	push->prev = right->prev;
+//	push->next = right;
+//	right->prev->next = push;
+//	right->prev = push;
+//	return (1);
+//}
+
+int	push_left_front_to_right(t_stack *left, t_stack *right)
 {
 	t_stack *push;
 
-// rightが0の時をまだ考えてない
 	if (stack_size(left) <= 0)
 		return (0);
-	push = left->prev;
-	push->prev->next = left;
-	left->prev = left->prev->prev;
-	push->prev = right->prev;
-	push->next = right;
-	right->prev->next = push;
-	right->prev = push;
+	push = left->next;
+	push->next->prev = left;
+	left->next = push->next;
+	push->prev = right;
+	push->next = right->next;
+	right->next->prev = push;
+	right->next = push;
 	return (1);
 }
 

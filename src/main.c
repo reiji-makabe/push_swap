@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 01:34:40 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/07 18:36:07 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/07 22:47:53 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,7 +107,7 @@ static int	*char_2d_a_to_int_a(int num, char **char_2d)
 		re[num] = ft_atoi(char_2d[num]);
 		tmp = ft_itoa(re[num]);
 		if ((ft_strlen(tmp) != ft_strlen(char_2d[num]))
-			&& !ft_strncmp(tmp, char_2d[num], ft_strlen(tmp)))
+			&& ft_strncmp(tmp, char_2d[num], ft_strlen(tmp)))
 			flag = 1;
 		free(tmp);
 		if (flag)
@@ -130,7 +130,6 @@ static t_stack	*int_array_to_stack(int *split, int num)
 	while (num--)
 	{
 		if (!stack_add_back(re, *split))
-
 		{
 			stack_clear(re);
 			return (NULL);
