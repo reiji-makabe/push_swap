@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 02:34:14 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/07 17:49:49 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/08 14:53:22 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	coordinate_compress(t_stack *a, int *split, size_t size)
 		rank = 0;
 		while (split[rank] != tmp->num)
 			rank++;
-		tmp->rank = split[rank];
+		tmp->rank = rank;
 		tmp = tmp->next;
 	}
 }
