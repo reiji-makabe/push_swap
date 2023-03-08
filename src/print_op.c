@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/19 15:48:45 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/09 07:00:59 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/09 08:11:18 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ int	print_op(t_list *op)
 	flag = 1;
 	while (flag)
 	{
+		flag = 0;
 		size = ft_lstsize(op);
 		edit = op->next;
 		old = op;
@@ -44,8 +45,7 @@ int	print_op(t_list *op)
 			if (!edit_ops(old, new, flag, &edit))
 				old = old->next;
 		}
-		if (size != ft_lstsize(op))
-			flag = 1;
+		flag = (size != ft_lstsize(op));
 	}
 	return (print_all(op, new));
 }
