@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 21:28:10 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/07 18:33:39 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/10 14:55:11 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,13 @@ size_t	stack_size(t_stack *sentinel)
 
 void	stack_delone(t_stack *sentinel, t_stack *del)
 {
-	if (sentinel == del)
+	t_stack	*prev;
+
+	if (del != sentinel)
 	{
+		prev = del->prev;
 		del->next->prev = del->prev;
-		del->prev->next = del->next;
+		prev->next = del->next;
 		free(del);
 	}
 }
@@ -71,13 +74,14 @@ void	stack_delone(t_stack *sentinel, t_stack *del)
 void	stack_clear(t_stack *sentinel)
 {
 	t_stack	*del;
-	t_stack	*tmp;
+	t_stack	*next;
 
 	del = sentinel->next;
 	while (del != sentinel)
 	{
-		tmp = del->next;
+		next = del->next;
 		stack_delone(sentinel, del);
-		del = tmp;
+		del = next;
 	}
+	free(sentinel);
 }

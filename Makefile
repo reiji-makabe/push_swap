@@ -6,7 +6,7 @@
 #    By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 17:23:21 by rmakabe           #+#    #+#              #
-#    Updated: 2023/03/07 17:58:40 by rmakabe          ###   ########.fr        #
+#    Updated: 2023/03/10 14:15:57 by rmakabe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,8 @@ ifdef WITH_DEBUG
 	DEBUG := -O0 -g3
 endif
 
-CFLAGS := -Wall -Wextra -Werror $(DEBUG) -I
+SANITIZE :=-fsanitize=leak -fsanitize=address
+CFLAGS := -Wall -Wextra -Werror $(DEBUG) $(SANITIZE) -I
 RM := rm -rf
 AR := ar -rcs
 
@@ -30,16 +31,12 @@ ARCHIVE_DIR := 42_chores/ft_printf
 SRC := $(wildcard $(SRC_DIR)*.c)
 OBJ := $(addprefix $(OBJ_DIR), $(notdir $(SRC:.c=.o)))
 
-
 # command
 all: $(NAME)
 
 $(NAME):$(OBJ)
-	@mkdir -p $(OBJ_DIR)
-ifeq ("$(wildcard $(ARCHIVE))", "")
+	mkdir -p $(OBJ_DIR)
 	make $(ARCHIVE)
-endif
-	$(CC) $(CFLAGS) $(INCLUDE) -c $< -o $@
 	$(CC) $(CFLAGS) $(INCLUDE) $^ -o $(NAME) $(ARCHIVE)
 
 $(OBJ_DIR)%.o:$(SRC_DIR)%.c
@@ -65,6 +62,6 @@ debug:
 	make WITH_DEBUG=1
 
 norm:
-	norminette $(SRC_DIR) $(INCLUDE) | grep Error || true
+	@norminette $(SRC_DIR) $(INCLUDE) | grep Error || true
 
 .PHONY: all clean fclean re debug norm

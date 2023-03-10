@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/07 19:08:10 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/09 08:11:40 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/10 00:12:39 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,20 +24,21 @@ void	quick_sort(t_stack *a, t_stack *b, t_list *op)
 	size_t	rank;
 	size_t	i;
 
-	rank = stack_size(a) / 2;
+	rank = stack_size(a) - 4;
 	i = 0;
-	tmp = a->next;
-	while (i++ < rank)
+	while (i++ <= rank)
 	{
-		if (tmp->rank == i - 1)
-			move_less_half(a, b, tmp, op);
-		tmp = tmp->next;
+		tmp = a->next;
+		while (tmp->rank != i - 1)
+			tmp = tmp->next;
+		move_less_half(a, b, tmp, op);
 	}
-	sort_three_num(a, &op);
+	if (!a_is_sorted(a))
+		sort_three_num(a, &op);
 	i = 0;
-	while (i++ < stack_size(b))
+	rank = stack_size(b);
+	while (i++ < rank)
 		pa(a, b, &op);
-	print_op(op);
 }
 
 static void	move_less_half(t_stack *a, t_stack *b, t_stack *tmp, t_list *op)
@@ -50,11 +51,20 @@ static void	move_less_half(t_stack *a, t_stack *b, t_stack *tmp, t_list *op)
 	now = a->next;
 	pos = 0;
 	while (now != tmp)
+	{
 		pos++;
+		now = now->next;
+	}
 	if (pos + 1 <= (size + 1) / 2)
 	{
 		while (pos--)
 			ra(a, &op);
+	}
+	else
+	{
+		pos = stack_size(a) - pos;
+		while (pos--)
+			rra(a, &op);
 	}
 	pb(a, b, &op);
 }

@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 02:34:46 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/09 07:26:21 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/09 18:21:08 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,5 +20,6 @@ void	coordinate_compress(t_stack *a, int *split, size_t size);
 void	binary_radix_sort(t_stack *a, t_stack *b, t_list *op);
 void	sort_three_num(t_stack *a, t_list **op);
 void	quick_sort(t_stack *a, t_stack *b, t_list *op);
+int		a_is_sorted(t_stack *a);
 
 #endif

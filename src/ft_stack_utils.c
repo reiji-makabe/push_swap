@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 05:02:40 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/09 06:52:19 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/10 13:51:19 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,10 @@
 #include "push_swap_utils.h"
 #include "ft_stack.h"
 
-// 1. next change
-// 2. prev change (information is destroyed. tmp is necessary.)
+/*
+ 1. next change
+ 2. prev change (information is destroyed. tmp is necessary.)
+*/
 
 int	swap_last_two(t_stack *sentinel)
 {
@@ -32,23 +34,23 @@ int	swap_last_two(t_stack *sentinel)
 	sentinel->prev = tmp;
 	return (1);
 }
+/*
+int	push_left_last_to_right(t_stack *left, t_stack *right)
+{
+	t_stack *push;
 
-//int	push_left_last_to_right(t_stack *left, t_stack *right)
-//{
-//	t_stack *push;
-//
-//// rightが0の時をまだ考えてない
-//	if (stack_size(left) <= 0)
-//		return (0);
-//	push = left->prev;
-//	push->prev->next = left;
-//	left->prev = left->prev->prev;
-//	push->prev = right->prev;
-//	push->next = right;
-//	right->prev->next = push;
-//	right->prev = push;
-//	return (1);
-//}
+	if (stack_size(left) <= 0)
+		return (0);
+	push = left->prev;
+	push->prev->next = left;
+	left->prev = left->prev->prev;
+	push->prev = right->prev;
+	push->next = right;
+	right->prev->next = push;
+	right->prev = push;
+	return (1);
+}
+*/
 
 int	push_left_front_to_right(t_stack *left, t_stack *right)
 {
@@ -66,7 +68,6 @@ int	push_left_front_to_right(t_stack *left, t_stack *right)
 	return (1);
 }
 
-// ra, rraは2個の要素数のときまだ考えてないからね
 int	rotate_stack(t_stack *sentinel)
 {
 	t_stack	*head;
@@ -97,7 +98,6 @@ int	reverse_rotate_stack(t_stack *sentinel)
 	last->prev->next = sentinel;
 	sentinel->prev = last->prev;
 	sentinel->next = last;
-	head->next->prev = last;
 	head->prev = last;
 	last->next = head;
 	last->prev = sentinel;

@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 17:09:36 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/09 07:03:11 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/09 22:16:48 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 #include "push_swap_utils.h"
 #include "ft_stack.h"
 
-static int	a_is_sorted(t_stack *a);
+int	a_is_sorted(t_stack *a);
 
 int	push_swap(t_stack *a, t_stack *b)
 {
@@ -45,7 +45,7 @@ int	push_swap(t_stack *a, t_stack *b)
 	return (re);
 }
 
-static int	a_is_sorted(t_stack *a)
+int	a_is_sorted(t_stack *a)
 {
 	t_stack	*tmp_p;
 	int		tmp_num;
@@ -55,11 +55,11 @@ static int	a_is_sorted(t_stack *a)
 	while (tmp_p != a)
 	{
 		if (tmp_num > tmp_p->num)
-			return (1);
-		tmp_p = tmp_p->next;
+			return (0);
 		tmp_num = tmp_p->num;
+		tmp_p = tmp_p->next;
 	}
-	return (0);
+	return (1);
 }
 
 /*
