@@ -6,18 +6,18 @@
 #    By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/02/01 17:23:21 by rmakabe           #+#    #+#              #
-#    Updated: 2023/03/10 14:15:57 by rmakabe          ###   ########.fr        #
+#    Updated: 2023/03/10 15:00:55 by rmakabe          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME := push_swap
 CC := cc
+SANITIZE :=-fsanitize=leak -fsanitize=address
 
 ifdef WITH_DEBUG
-	DEBUG := -O0 -g3
+	DEBUG :=-O0 -g3
 endif
 
-SANITIZE :=-fsanitize=leak -fsanitize=address
 CFLAGS := -Wall -Wextra -Werror $(DEBUG) $(SANITIZE) -I
 RM := rm -rf
 AR := ar -rcs
