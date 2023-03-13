@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 02:34:14 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/08 14:53:22 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/13 18:19:35 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,20 +20,6 @@ void	push_swap_error(void)
 {
 	ft_putstr_fd("Error\n", 2);
 	exit(EXIT_FAILURE);
-}
-
-void	free_2d_array(char **re)
-{
-	int		index;
-
-	if (re)
-	{
-		index = 0;
-		while (re[index] != NULL)
-			free(re[index++]);
-		free(re);
-		re = NULL;
-	}
 }
 
 int	split_check(int *split, size_t size)
