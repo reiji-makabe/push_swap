@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/10/15 16:24:12 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/13 18:17:31 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/03/13 18:32:23 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,7 @@ void	ft_lstclear(t_list **lst, void (*del)(void *));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 
-int	ft_strcmp(char const *s1, char const *s2);
+int		ft_strcmp(char const *s1, char const *s2);
 void	free_2d_array(char **re);
 
 #endif
