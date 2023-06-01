@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/04 05:02:40 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/14 00:00:31 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/06/01 14:41:21 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	swap_last_two(t_stack *sentinel)
 		return (0);
 	swap_1 = sentinel->next;
 	swap_2 = sentinel->next->next;
+	swap_2->next->prev = swap_1;
 	sentinel->next = swap_2;
 	swap_1->next = swap_2->next;
 	swap_1->prev = swap_2;

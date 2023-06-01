@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 01:34:40 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/06/01 13:56:02 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/06/01 14:18:29 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ int	main(int argc, char *argv[])
 	stack_clear(b);
 	if (!error)
 		push_swap_error();
+	return (0);
 }
 
 static t_stack	*put_in_stack_and_add_coord_comp(int argc, char **argv)
