@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 02:34:14 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/13 18:19:35 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/06/01 13:13:14 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "ft_printf.h"
 #include "ft_stack.h"
 
-void	selection_sort(int *split, int size);
+static void	selection_sort(int *split, int size);
 
 void	push_swap_error(void)
 {
@@ -63,7 +63,7 @@ void	coordinate_compress(t_stack *a, int *split, size_t size)
 	}
 }
 
-void	selection_sort(int *split, int size)
+static void	selection_sort(int *split, int size)
 {
 	int		i;
 	int		j;

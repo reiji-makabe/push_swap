@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 01:34:40 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/07 22:47:53 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/06/01 13:47:03 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,12 @@ static t_stack	*put_in_stack_and_add_coord_comp(int argc, char **argv)
 		split = char_2d_a_to_int_a(argc - 1, argv + 1);
 		size = argc - 1;
 	}
-	if ((split == NULL) || (split_check(split, size)))
+	if (split == NULL || split_check(split, size))
 	{
 		free(split);
-		return (NULL);
+		if (split == NULL)
+			return (NULL);
+		exit (0);
 	}
 	re = int_array_to_stack(split, size);
 	if (re != NULL)
@@ -107,7 +109,7 @@ static int	*char_2d_a_to_int_a(int num, char **char_2d)
 		re[num] = ft_atoi(char_2d[num]);
 		tmp = ft_itoa(re[num]);
 		if ((ft_strlen(tmp) != ft_strlen(char_2d[num]))
-			&& ft_strncmp(tmp, char_2d[num], ft_strlen(tmp)))
+			|| ft_strncmp(tmp, char_2d[num], ft_strlen(char_2d[num])))
 			flag = 1;
 		free(tmp);
 		if (flag)

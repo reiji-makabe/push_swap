@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/09 17:09:36 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/03/09 22:16:48 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/06/01 12:11:59 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,6 @@
 #include "push_swap.h"
 #include "push_swap_utils.h"
 #include "ft_stack.h"
-
-int	a_is_sorted(t_stack *a);
 
 int	push_swap(t_stack *a, t_stack *b)
 {
