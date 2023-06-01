@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 01:34:40 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/06/01 13:47:03 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/06/01 13:56:02 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,10 +60,10 @@ static t_stack	*put_in_stack_and_add_coord_comp(int argc, char **argv)
 		split = char_2d_a_to_int_a(argc - 1, argv + 1);
 		size = argc - 1;
 	}
-	if (split == NULL || split_check(split, size))
+	if (split == NULL || split_check(split, &size))
 	{
 		free(split);
-		if (split == NULL)
+		if (split == NULL || size == 0)
 			return (NULL);
 		exit (0);
 	}

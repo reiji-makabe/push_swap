@@ -6,7 +6,7 @@
 /*   By: rmakabe <rmkabe012@gmail.com>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/02 02:34:14 by rmakabe           #+#    #+#             */
-/*   Updated: 2023/06/01 13:13:14 by rmakabe          ###   ########.fr       */
+/*   Updated: 2023/06/01 13:57:08 by rmakabe          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	push_swap_error(void)
 	exit(EXIT_FAILURE);
 }
 
-int	split_check(int *split, size_t size)
+int	split_check(int *split, size_t *size)
 {
 	size_t	i;
 	size_t	j;
@@ -30,13 +30,16 @@ int	split_check(int *split, size_t size)
 
 	i = 0;
 	flag = 1;
-	while (i < size - 1)
+	while (i < *size - 1)
 	{
 		j = i + 1;
-		while (j < size)
+		while (j < *size)
 		{
 			if (split[i] == split[j])
+			{
+				*size = 0;
 				return (1);
+			}
 			j++;
 		}
 		if (split[i] > split[i + 1])
